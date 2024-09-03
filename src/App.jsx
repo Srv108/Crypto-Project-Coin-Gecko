@@ -5,9 +5,6 @@ function App() {
 
   return (
     <>
-      {/* <CurrencyContext.Provider value={{currency,setCurrency}}> */}
-      {/* </CurrencyContext.Provider> */}
-
       <Home />
     </>
   )
