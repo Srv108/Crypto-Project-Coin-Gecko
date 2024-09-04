@@ -1,4 +1,3 @@
-import { Children } from "react";
 import axiosInstance from "../helpers/axiosInstance";
 
 export async function fecthCoinData(page,currency = 'usd'){
