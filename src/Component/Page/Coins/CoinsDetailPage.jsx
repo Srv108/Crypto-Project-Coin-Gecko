@@ -3,10 +3,12 @@ import { useQuery } from "react-query";
 import { fetchCoinDetails } from "../../../services/fetchCoinDetails";
 import { useEffect } from "react";
 import parse from 'html-react-parser';
+import currencyStore from "../../../zustand/state"
 
 function CoinsDetailPage(){
 
     const {coinId} = useParams();
+    const {currency} = currencyStore();
 
     const {data: coin,isLoading,isError} = useQuery(["coins",coinId] , () => fetchCoinDetails(coinId),{
         cacheTime : 1000*60*2,
@@ -53,7 +55,7 @@ function CoinsDetailPage(){
                         Current Price
                     </h2>
                     <span className="ml-3 text-xl ">
-                        {coin?.market_data.current_price["usd"]}
+                        {coin?.market_data.current_price[currency]}
                     </span>
                 </div>
 
