@@ -4,6 +4,8 @@ import { fetchCoinDetails } from "../../../services/fetchCoinDetails";
 import { useEffect } from "react";
 import parse from 'html-react-parser';
 import currencyStore from "../../../zustand/state"
+import CoinChartContainer from "../../CoinChart/CoinChartContainer";
+import Footer from "../../Footer/Footer";
 
 function CoinsDetailPage(){
 
@@ -14,10 +16,6 @@ function CoinsDetailPage(){
         cacheTime : 1000*60*2,
         staleTime : 1000*60*2,
     });
-
-    useEffect(() => {
-        console.log(coin);
-    },[coin]);
 
     if(isLoading){
         return(
@@ -31,6 +29,7 @@ function CoinsDetailPage(){
     }
 
     return(
+        <>
         <div className="flex flex-col md:flex-row"> 
             <div className="md:w-1/3 w-full flex flex-col items-center mt-6 md:mt-0 border-r-2 border-gray-500">
                 <img 
@@ -66,9 +65,17 @@ function CoinsDetailPage(){
                 </p>
             </div> 
             <div className="md:w-2/3 w-full">
-                <h1>Coins Data</h1>
+                <CoinChartContainer 
+                    coinId={coinId}
+                />
             </div>
+
         </div>
+        <div className="mt-96">
+            <Footer/>
+        </div>
+        </>
+
     );
 }
 
