@@ -26,19 +26,12 @@ const store = create((set) => ({
         }
     }),
 
-    // isLoading: false,
-    // setisLoading : (newStateLoading) => set((state) => {
-    //     return{
-    //         isLoading : newStateLoading,
-    //     }
-    // }),
-
-    // Errors : null,
-    // setErrors : (givenErrors) => set((state) => {
-    //     return{
-    //         Errors : givenErrors,
-    //     }
-    // }),
+    displayedValue : "",
+    setDisplayedValue : (newValue) => set((state) => {
+        return {
+            displayedValue : newValue,
+        }
+    }),
 
 }));
 

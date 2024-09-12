@@ -1,14 +1,25 @@
 import { useNavigate } from "react-router-dom";
 import currencyStore from "../../zustand/state"
+import SearchBox from "../SearchBox/SearchBox";
+import { useState } from "react";
+
 function Navbar(){  
 
     // const { setCurrency } = useContext(CurrencyContext);
 
     const { setCurrency } = currencyStore();
     const navigate = useNavigate();
+    const [searchFlag,setSearchFlag] = useState(false);
+
+    
 
     function gotoHome(){
         navigate("/");
+    }
+    
+
+    const handleSearchIcon = () => {
+        setSearchFlag(true);
     }
     return (
         <div className="navbar bg-base-100 w-full">
@@ -47,8 +58,9 @@ function Navbar(){
                 >Crypto Tracker</a>
             </div>
             <div className="navbar-end">
-                <button className="btn btn-ghost btn-circle">
-                <svg
+                {searchFlag && <span> <SearchBox /> </span>}
+                <button onClick={handleSearchIcon} className="btn btn-ghost btn-circle">
+                <svg    
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5"
                     fill="none"
