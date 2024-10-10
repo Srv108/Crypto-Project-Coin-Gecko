@@ -3,6 +3,9 @@ import { useQuery } from "react-query";
 import { useEffect, useState } from "react";
 import store from "../../zustand/state";
 import { fetchCoinsList } from "../../services/fetchCoinsList";
+import SearchBoxDesign from "./SeachBoxDesign";
+
+
 
 function SearchBox() {
     const { displayedValue, setDisplayedValue } = store();
@@ -14,6 +17,7 @@ function SearchBox() {
         staleTime: 1000 * 60 * 2,
     });
 
+    
     
 
     useEffect(() => {
@@ -35,14 +39,21 @@ function SearchBox() {
     
     return (
         <>
-            <ReactSearchBox
-                placeholder="Search for a coin"
-                data={filteredData.length ? filteredData : []}
-                onChange={(value) => 
-                    setDisplayedValue(value)
-                }
-                className="fixed top-dropdown w-full max-h-dropdown overflow-y-auto z-50 bg-white border border-gray-300"
-            />
+            <div>
+
+            </div>
+                <div className=" mt-2 border border-gray-300 rounded shadow-lg max-h-80 overflow-y-auto w-72">
+                    <ReactSearchBox
+                        placeholder="Search for a coin"
+                        data={filteredData.length ? filteredData : []}
+                        onChange={(value) => 
+                            setDisplayedValue(value)
+                        }
+                        onSelect={(record) => (console.log(record))}
+                        clearOnSelect = {true}
+                    />
+                </div>
+                
         </>
     );
 }
